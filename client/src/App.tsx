@@ -22,6 +22,13 @@ export interface AppProps {
     data: GroupData[]
 }
 
+const defaultFilters : Filters = {
+    Category: '',
+    Campus: '',
+    GroupType: '',
+    MeetDay: ''
+};
+
 const Transition = React.forwardRef(function Transition(props: any, ref: any) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -29,12 +36,7 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
 const App = (props: AppProps) => {
     const [group, setGroup] = React.useState(props.data[0]);
     const [selectedFilter, setSelectedFilter] = React.useState('');
-    const [filters, setFilters] = React.useState({
-        Category: '',
-        Campus: '',
-        GroupType: '',
-        MeetDay: ''
-    } as Filters)
+    const [filters, setFilters] = React.useState(defaultFilters)
     const [openFilter, setOpenFilter] = React.useState(false);
     const [openGroupDetails, setOpenGroupDetails] = React.useState(false);
 
@@ -42,6 +44,11 @@ const App = (props: AppProps) => {
         console.log(`Filter clicked: ${filter}`);
         setSelectedFilter(filter);
         setOpenFilter(true);
+    }
+
+    const handleFilterClear = () => {
+        setSelectedFilter('');
+        setFilters(defaultFilters);
     }
 
     const handleFilterValueSelection = (filters: Filters) => {
@@ -108,6 +115,7 @@ const App = (props: AppProps) => {
                 <FilterButton title={'Category'} onClick={handleFilterClick} />
                 <FilterButton title={'Group Type'} onClick={handleFilterClick} />
             </ButtonGroup>
+            <Button onClick={handleFilterClear}>Clear</Button>
             <List>
                 { listItems }
             </List>
