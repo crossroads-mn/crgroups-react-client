@@ -14,6 +14,9 @@ import { GroupData } from './models/GroupData';
 import GroupListItem from './GroupListItem';
 import FilterButton from './FilterButton';
 import { Filters } from 'models/Filters';
+import CampusFilterDialog from './CampusFilterDialog';
+import CategoryFilterDialog from './CategoryFilterDialog';
+import GroupTypeFilterDialog from './GroupTypeFilterDialog';
 
 export interface AppProps {
     data: GroupData[]
@@ -60,9 +63,19 @@ const App = (props: AppProps) => {
         setOpenGroupDetails(false);
     };
 
-    const listItems = props.data.filter((g) => {
+    const listItems = props.data
+    .filter((g) => {
         if (filters.MeetDay == '') { return true; }
         else { return filters.MeetDay == g.MEET_DAY }
+    }).filter((g) => {
+        if (filters.Category == '') { return true; }
+        else { return filters.Category == g.CATEGORY }
+    }).filter((g) => {
+        if (filters.Campus == '') { return true; }
+        else { return filters.Campus == g.CAMPUS }
+    }).filter((g) => {
+        if (filters.GroupType == '') { return true; }
+        else { return filters.GroupType == g.GROUP_TYPE }
     }).map((g) => {
         return (<GroupListItem group={g} onClick={handleGroupClick}/>
         )
@@ -71,6 +84,15 @@ const App = (props: AppProps) => {
     const currentFilterDialog = () => {
         if (selectedFilter == "Days") {
             return (<DayFilterDialog filters={filters} onFilterSelection={handleFilterValueSelection}/>)
+        }
+        if (selectedFilter == "Locations") {
+            return (<CampusFilterDialog filters={filters} onFilterSelection={handleFilterValueSelection}/>)
+        }
+        if (selectedFilter == "Category") {
+            return (<CategoryFilterDialog filters={filters} onFilterSelection={handleFilterValueSelection}/>)
+        }
+        if (selectedFilter == "Group Type") {
+            return (<GroupTypeFilterDialog filters={filters} onFilterSelection={handleFilterValueSelection}/>)
         }
 
         return (<></>)
