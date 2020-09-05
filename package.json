@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "node ./util/server-pre-build.js",
     "build": "tsc",
+    "dev": "yarn build && cross-env APP_ENV=development cross-env DEBUG=app* node dist/main.js",
     "start": "node dist/main.js"
   },
   "dependencies": {

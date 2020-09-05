@@ -27,11 +27,7 @@ export class HealthModule implements ExpressRequestHandler {
       'NODE_VERSION',
       'YARN_VERSION'
     ];
-    const maskedKeys = [
-      'AZURE_STORAGE_ACCOUNT_NAME',
-      'AZURE_STORAGE_ACCOUNT_ACCESS_KEY',
-      'AZURE_STORAGE_CONTAINER_NAME'
-    ];
+    const maskedKeys = AppConfigMaskedList;
 
     // Start by showing all keys (to get a dump of what is available)
     Object.keys(process.env).forEach(k => {
