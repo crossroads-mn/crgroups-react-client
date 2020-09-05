@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Button from '@material-ui/core/Button';
 
 export interface GroupData {
     TITLE: string
@@ -22,12 +23,15 @@ export class App extends React.Component<AppProps> {
         })
 
         return (
-            <table>
-                <tr>
-                    Title
-                </tr>
-                { tableCells }
-            </table>
+            <>
+                <Button variant="contained" color="primary">Button here!</Button>
+                <table>
+                    <tr>
+                        Title
+                    </tr>
+                    { tableCells }
+                </table>
+            </>
         )
     }
 }
