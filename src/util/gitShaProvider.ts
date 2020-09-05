@@ -10,7 +10,7 @@ export function fetchSha(env: string): string {
 }
 
 function fetchProdSha(): string {
-    const activeDeployPath = path.join(__dirname, '../../../../deployments/active');
+    const activeDeployPath = path.join(__dirname, '../../../deployments/active');
     return fs.readFileSync(activeDeployPath).toString();
 }
 
