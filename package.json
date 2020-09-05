@@ -1,0 +1,30 @@
+{
+  "name": "crgroups-react-client",
+  "version": "1.0.0",
+  "description": "Crossroads Groups App React",
+  "main": "main.js",
+  "author": "Benjamin Spain <benjamin@thespains.net>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "node ./util/server-pre-build.js",
+    "build": "tsc",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "appfig": "^1.0.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.8",
+    "@types/jest": "^26.0.13",
+    "@types/nconf": "^0.10.0",
+    "@types/node": "^14.6.4",
+    "cross-env": "^7.0.2",
+    "jest": "^26.4.2",
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  }
+}
