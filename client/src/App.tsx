@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import DayFilterDialog from './DayFilterDialog';
 import Slide from '@material-ui/core/Slide';
 import { GroupData } from './models/GroupData';
 import GroupListItem from './GroupListItem';
@@ -23,17 +24,29 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
   });
 
 const App = (props: AppProps) => {
-    const [openGroupDetails, setOpenGroupDetails] = React.useState(false);
     const [group, setGroup] = React.useState(props.data[0]);
+    const [selectedFilter, setSelectedFilter] = React.useState('');
     const [filters, setFilters] = React.useState({
         Category: '',
         Campus: '',
         GroupType: '',
         MeetDay: ''
     } as Filters)
+    const [openFilter, setOpenFilter] = React.useState(false);
+    const [openGroupDetails, setOpenGroupDetails] = React.useState(false);
 
-    const handleFiltersClick = (filter: string) => {
+    const handleFilterClick = (filter: string) => {
         console.log(`Filter clicked: ${filter}`);
+        setSelectedFilter(filter);
+        setOpenFilter(true);
+    }
+
+    const handleFilterValueSelection = (filters: Filters) => {
+        console.log(`New filters: ${filters}`)
+    }
+
+    const handleFilterClose = () => {
+        setOpenFilter(false);
     }
 
     const handleGroupClick = (group: GroupData) => {
@@ -51,19 +64,35 @@ const App = (props: AppProps) => {
         )
     })
 
+    const currentFilterDialog = () => {
+        if (selectedFilter == "Days") {
+            return (<DayFilterDialog filters={filters} onFilterSelection={handleFilterValueSelection}/>)
+        }
+
+        return (<></>)
+    } 
+
     return (
         <>
             <ButtonGroup color="primary">
-                <FilterButton title={'Days'} onClick={handleFiltersClick} />
-                <FilterButton title={'Locations'} onClick={handleFiltersClick} />
+                <FilterButton title={'Days'} onClick={handleFilterClick} />
+                <FilterButton title={'Locations'} onClick={handleFilterClick} />
             </ButtonGroup>
             <ButtonGroup color="primary">
-                <FilterButton title={'Category'} onClick={handleFiltersClick} />
-                <FilterButton title={'Group Type'} onClick={handleFiltersClick} />
+                <FilterButton title={'Category'} onClick={handleFilterClick} />
+                <FilterButton title={'Group Type'} onClick={handleFilterClick} />
             </ButtonGroup>
             <List>
                 { listItems }
             </List>
+            <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition as any}>
+                <Toolbar>
+                    <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close">
+                        <CloseIcon />
+                    </IconButton>
+                </Toolbar>
+                { currentFilterDialog() }
+            </Dialog>
             <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
                 <Toolbar>
                     <Typography variant="h5">
