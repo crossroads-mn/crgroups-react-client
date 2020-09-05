@@ -10,7 +10,8 @@
     "build": "tsc",
     "dev": "yarn build && cross-env APP_ENV=development cross-env DEBUG=app* node dist/main.js",
     "dev:debug": "cross-env APP_ENV=development cross-env DEBUG=app* node --inspect-brk dist/main.js",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "verify": "yarn build"
   },
   "dependencies": {
     "appfig": "^1.0.0",

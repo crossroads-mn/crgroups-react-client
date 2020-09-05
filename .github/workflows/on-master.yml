@@ -31,12 +31,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ env.NODE_VERSION }}
-    - name: npm install, build, and test
+    - name: 'Build Server and Validate'
       run: |
-        cd client
-        yarn install
-        yarn verify
-        cd ..
         yarn install
         yarn verify
     - name: 'Deploy to Azure WebApp'
