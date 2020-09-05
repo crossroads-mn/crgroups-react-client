@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { Filters } from './models/Filters';
 import { FormControl, FormLabel, FormControlLabel, RadioGroup, Radio, Dialog } from '@material-ui/core';
+import { Filters } from './models/Filters';
 
 const DayFilterDialog = (props: { filters: Filters, onFilterSelection: ( filters: Filters ) => void }) => {
 
-    const handleSelection = () => {
-        console.log(`Filter value selected`);
+    const handleSelection = (event: any) => {
+        console.log(`Filter value selected: ${event.target.value}`);
+
+        const newFilters = {...props.filters};
+        newFilters.MeetDay = event.target.value;
+
+        props.onFilterSelection(newFilters);
     }
 
     return (
         <FormControl component="fieldset">
             <FormLabel component="legend">Days</FormLabel>
-            <RadioGroup defaultValue={props.filters.MeetDay} name="day-filter" onChange={handleSelection}>
+            <RadioGroup defaultValue={props.filters.MeetDay} name="dayFilter" onChange={handleSelection}>
                 <FormControlLabel value="Sunday" control={<Radio />} label="Sunday" />
                 <FormControlLabel value="Monday" control={<Radio />} label="Monday" />
                 <FormControlLabel value="Tuesday" control={<Radio />} label="Tuesday" />

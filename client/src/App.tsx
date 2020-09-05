@@ -42,7 +42,8 @@ const App = (props: AppProps) => {
     }
 
     const handleFilterValueSelection = (filters: Filters) => {
-        console.log(`New filters: ${filters}`)
+        console.log(`New filters: Category = ${filters.Category}, Campus = ${filters.Campus}, GroupType = ${filters.GroupType}, MeetDay = ${filters.MeetDay}`);
+        setFilters(filters);
     }
 
     const handleFilterClose = () => {
@@ -59,7 +60,10 @@ const App = (props: AppProps) => {
         setOpenGroupDetails(false);
     };
 
-    const listItems = props.data.map((g) => {
+    const listItems = props.data.filter((g) => {
+        if (filters.MeetDay == '') { return true; }
+        else { return filters.MeetDay == g.MEET_DAY }
+    }).map((g) => {
         return (<GroupListItem group={g} onClick={handleGroupClick}/>
         )
     })
