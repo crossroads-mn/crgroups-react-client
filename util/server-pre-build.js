@@ -38,12 +38,12 @@ console.log(`Client bundle: ${client_bundle}`);
 console.log('Making server public...');
 fs.mkdirSync(server_public);
 
-// console.log('Copying index.html');
-// fs.copyFileSync(client_indexpage, path.join(server_public, "index.html"));
+console.log('Copying index.html');
+fs.copyFileSync(client_indexpage, path.join(server_public, "index.html"));
 
-// console.log('Copying favicon.png');
-// fs.copyFileSync(client_favicon, path.join(server_public, 'favicon.png'));
+console.log('Copying favicon.png');
+fs.copyFileSync(client_favicon, path.join(server_public, 'favicon.png'));
 
-// console.log('Copying client bundle');
-// fs.copyFileSync(client_bundle, path.join(server_public, 'bundle.js'));
+console.log('Copying client bundle');
+fs.copyFileSync(client_bundle, path.join(server_public, 'bundle.js'));
 

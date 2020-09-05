@@ -7,6 +7,7 @@ interface LOG_MODULES {
   HELPERS: string;
   MODULE_HEALTH: string;
   MODULE_GROUPS_DATA: string;
+  MODULE_CLIENT: string; 
 }
 
 interface LOG_MODULE_INDEXER {
@@ -18,7 +19,8 @@ export const LOG_MODULE: LOG_MODULES & LOG_MODULE_INDEXER = {
   SERVER: 'app:server',
   HELPERS: 'app:helpers',
   MODULE_HEALTH: 'app:module:health',
-  MODULE_GROUPS_DATA: 'app:module:groups'
+  MODULE_GROUPS_DATA: 'app:module:groups',
+  MODULE_CLIENT: 'app:module:client'
 };
 
 export default class Logger {

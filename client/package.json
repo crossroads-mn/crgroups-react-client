@@ -6,7 +6,9 @@
   "author": "Benjamin Spain <benjamin@thespains.net>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --env.dev --config webpack.dev.js --colors --hot --inline --port 8080"
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --env.dev --config webpack.dev.js --colors --hot --inline --port 8080",
+    "verify": "yarn build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",

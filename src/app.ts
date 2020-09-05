@@ -2,6 +2,7 @@ import * as express from 'express';
 import { ConfigProvider as Config } from './config';
 import { HealthModule } from './modules/health';
 import { GroupsDataModule } from './modules/groups';
+import { ClientModule } from './modules/client';
 import Logger from './logger';
 
 export class AppProvider {
@@ -12,7 +13,8 @@ export class AppProvider {
 
     const health = new HealthModule(this.logger, this.config);
     const groups = new GroupsDataModule(this.logger, this.config);
-    // const clientService = new ClientContentService(this.logger);
+    const client = new ClientModule(this.logger, this.config);
+
 
     // App routes
     app.get('/health', health.requestHandler.bind(health));
@@ -23,7 +25,7 @@ export class AppProvider {
     };
     app.use('/public', express.static('./dist/public', staticOptions));
 
-    // app.use('*', seriesModule.requestHandler.bind(seriesModule));
+    app.use('*', client.requestHandler.bind(client));
 
     return app;
   }
