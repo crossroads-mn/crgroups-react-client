@@ -1,10 +1,7 @@
 import * as React from 'react';
-import Button from '@material-ui/core/Button';
-
-export interface GroupData {
-    TITLE: string
-    DESCRIPTION: string,
-}
+import List from '@material-ui/core/List';
+import { GroupData } from './models/GroupData';
+import GroupListItem from './GroupListItem';
 
 export interface AppProps {
     data: GroupData[]
@@ -16,22 +13,15 @@ export class App extends React.Component<AppProps> {
     }
 
     render(): JSX.Element {
-        const tableCells = this.props.data.map((g) => {
-            return <tr>
-                <td>{g.TITLE}</td>
-            </tr>
+        const listItems = this.props.data.map((g) => {
+            return (<GroupListItem group={g}/>
+            )
         })
 
         return (
-            <>
-                <Button variant="contained" color="primary">Button here!</Button>
-                <table>
-                    <tr>
-                        Title
-                    </tr>
-                    { tableCells }
-                </table>
-            </>
+            <List>
+                { listItems }
+            </List>
         )
     }
 }
