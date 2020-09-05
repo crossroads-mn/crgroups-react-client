@@ -47,7 +47,7 @@ const App = (props: AppProps) => {
                     <Typography variant="h5">
                         {group.TITLE}
                     </Typography>
-                    <Button>Sign Up</Button>
+                    <Button href={group.GROUP_LINK}>Sign Up</Button>
                     <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
                         <CloseIcon />
                     </IconButton>
