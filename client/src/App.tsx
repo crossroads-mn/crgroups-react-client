@@ -1,14 +1,18 @@
 import * as React from 'react';
 import List from '@material-ui/core/List';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import Slide from '@material-ui/core/Slide';
 import { GroupData } from './models/GroupData';
 import GroupListItem from './GroupListItem';
+import FilterButton from './FilterButton';
+import { Filters } from 'models/Filters';
 
 export interface AppProps {
     data: GroupData[]
@@ -19,17 +23,27 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
   });
 
 const App = (props: AppProps) => {
-    const [open, setOpen] = React.useState(false);
+    const [openGroupDetails, setOpenGroupDetails] = React.useState(false);
     const [group, setGroup] = React.useState(props.data[0]);
+    const [filters, setFilters] = React.useState({
+        Category: '',
+        Campus: '',
+        GroupType: '',
+        MeetDay: ''
+    } as Filters)
+
+    const handleFiltersClick = (filter: string) => {
+        console.log(`Filter clicked: ${filter}`);
+    }
 
     const handleGroupClick = (group: GroupData) => {
         console.log(`Group clicked: ${group.TITLE}`);
         setGroup(group);
-        setOpen(true);
+        setOpenGroupDetails(true);
     }
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleGroupDetailsClose = () => {
+        setOpenGroupDetails(false);
     };
 
     const listItems = props.data.map((g) => {
@@ -39,16 +53,24 @@ const App = (props: AppProps) => {
 
     return (
         <>
+            <ButtonGroup color="primary">
+                <FilterButton title={'Days'} onClick={handleFiltersClick} />
+                <FilterButton title={'Locations'} onClick={handleFiltersClick} />
+            </ButtonGroup>
+            <ButtonGroup color="primary">
+                <FilterButton title={'Category'} onClick={handleFiltersClick} />
+                <FilterButton title={'Group Type'} onClick={handleFiltersClick} />
+            </ButtonGroup>
             <List>
                 { listItems }
             </List>
-            <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition as any}>
+            <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
                 <Toolbar>
                     <Typography variant="h5">
                         {group.TITLE}
                     </Typography>
                     <Button href={group.GROUP_LINK}>Sign Up</Button>
-                    <IconButton edge="end" color="inherit" onClick={handleClose} aria-label="close">
+                    <IconButton edge="end" color="inherit" onClick={handleGroupDetailsClose} aria-label="close">
                         <CloseIcon />
                     </IconButton>
                 </Toolbar>
