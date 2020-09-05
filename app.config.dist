@@ -1,0 +1,6 @@
+{
+    "GROUP_DATABASE_HOST": "somedatabase.database.azure.com",
+    "GROUP_DATABASE_USER": "someuser",
+    "GROUP_DATABASE_PASS": "somepassword",
+    "GROUP_DATABASE_SCHEMA": "someschema"
+}

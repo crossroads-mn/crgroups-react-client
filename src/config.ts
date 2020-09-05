@@ -6,13 +6,13 @@ import { fetchSha } from './util/gitShaProvider';
 
 import appfig = require('appfig');
 
-const appConfigFile = path.join(__dirname, './../../../app.config.json'); // Secrets that should not be committed to source control
+const appConfigFile = path.join(__dirname, './../app.config.json'); // Secrets that should not be committed to source control
 const packageFile = path.join(__dirname, './../../../package.json'); // Version information
 
 const AppConfig = stringEnum([
   'meta',
   'port',
-  'azure_storage',
+  'azure_mysql_cert',
   'app_config_name',
   'app_config_loaded',
   'package_json_loaded',
@@ -27,7 +27,7 @@ const AppConfig = stringEnum([
 const AppConfigWhitelist: string[] = [
   AppConfig.meta,
   AppConfig.port,
-  AppConfig.azure_storage,
+  AppConfig.azure_mysql_cert,
   AppConfig.app_config_name,
   AppConfig.app_config_loaded,
   AppConfig.package_json_loaded,

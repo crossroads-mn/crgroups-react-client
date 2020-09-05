@@ -6,11 +6,7 @@ interface LOG_MODULES {
   SERVER: string;
   HELPERS: string;
   MODULE_HEALTH: string;
-  MODULE_SERIES: string;
-  SERVICE_SERIES: string;
-  SERIVCE_CLIENT: string;
-  PROVIDER_LOCAL_SERIES: string;
-  PROVIDER_AZURE_ENTRY: string;
+  MODULE_GROUPS_DATA: string;
 }
 
 interface LOG_MODULE_INDEXER {
@@ -22,11 +18,7 @@ export const LOG_MODULE: LOG_MODULES & LOG_MODULE_INDEXER = {
   SERVER: 'app:server',
   HELPERS: 'app:helpers',
   MODULE_HEALTH: 'app:module:health',
-  MODULE_SERIES: 'app:module:series',
-  SERVICE_SERIES: 'app:service:series',
-  SERIVCE_CLIENT: 'app:service:client',
-  PROVIDER_LOCAL_SERIES: 'app:provider:local-series',
-  PROVIDER_AZURE_ENTRY: 'app:provider:azure-entry'
+  MODULE_GROUPS_DATA: 'app:module:groups'
 };
 
 export default class Logger {
