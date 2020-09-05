@@ -1,7 +1,7 @@
 {
   "name": "crgroups-react-client",
   "version": "1.0.0",
-  "description": "Crossroads Groups App React",
+  "description": "Crossroads Church Groups React App Server",
   "main": "main.js",
   "author": "Benjamin Spain <benjamin@thespains.net>",
   "license": "MIT",
