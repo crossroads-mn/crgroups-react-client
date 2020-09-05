@@ -33,6 +33,10 @@ jobs:
         node-version: ${{ env.NODE_VERSION }}
     - name: 'Build Server and Validate'
       run: |
+        cd client
+        yarn install
+        yarn verify
+        cd ..
         yarn install
         yarn verify
     - name: 'Deploy to Azure WebApp'
