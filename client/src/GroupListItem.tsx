@@ -8,7 +8,11 @@ import DeckIcon from '@material-ui/icons/Deck';
 import WeekendIcon from '@material-ui/icons/Weekend'; 
 import { GroupData } from 'models/GroupData';
 
-const GroupListItem = (props: { group: GroupData }) => {
+const GroupListItem = (props: { group: GroupData, onClick: (group: GroupData) => void }) => {
+
+    const handleClick = () => {
+        props.onClick(props.group);
+    }
 
     let avatar;
 
@@ -36,7 +40,7 @@ const GroupListItem = (props: { group: GroupData }) => {
     }
 
     return (
-        <ListItem>
+        <ListItem onClick={handleClick}>
             <ListItemAvatar>
                 { avatar }
             </ListItemAvatar>
