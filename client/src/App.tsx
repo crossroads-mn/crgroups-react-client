@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles';
 import DayFilterDialog from './DayFilterDialog';
 import GroupListItem from './GroupListItem';
 import FilterButton from './FilterButton';
@@ -23,6 +24,15 @@ export interface AppProps {
     data: GroupData[]
 }
 
+const useStyles = makeStyles({
+    dialogCloseButton: {
+        marginRight: '4px',
+    },
+    dialogTitle: {
+        flexGrow: 1,
+    }
+})
+
 const defaultFilters : Filters = {
     Category: '',
     Campus: '',
@@ -35,6 +45,9 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
   });
 
 const App = (props: AppProps) => {
+
+    const classes = useStyles();
+
     const [group, setGroup] = React.useState(props.data[0]);
     const [selectedFilter, setSelectedFilter] = React.useState('');
     const [filters, setFilters] = React.useState(defaultFilters)
@@ -121,16 +134,16 @@ const App = (props: AppProps) => {
                 { listItems }
             </List>
             <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition as any}>
-                <AppBar>
-                    <Toolbar>
-                        <Typography variant="h6" color="inherit">
-                            { selectedFilter }
-                        </Typography>
-                        <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close">
-                            <CloseIcon />
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
+                    <AppBar position="fixed">
+                        <Toolbar>
+                            <Typography variant="h6" color="inherit" className={classes.dialogTitle}>
+                                { selectedFilter }
+                            </Typography>
+                            <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close" className={classes.dialogCloseButton}>
+                                <CloseIcon />
+                            </IconButton>
+                        </Toolbar>
+                    </AppBar>
                 <Toolbar />
                 { currentFilterDialog() }
             </Dialog>
