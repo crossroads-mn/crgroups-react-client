@@ -12,8 +12,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core/styles';
 import DayFilterDialog from './DayFilterDialog';
 import GroupListItem from './GroupListItem';
-import FilterButton from './FilterButton';
-import ResetButton from './ResetButton';
+import StyledButton from './StyledButton';
 import CampusFilterDialog from './CampusFilterDialog';
 import CategoryFilterDialog from './CategoryFilterDialog';
 import GroupTypeFilterDialog from './GroupTypeFilterDialog';
@@ -143,13 +142,13 @@ const App = (props: AppProps) => {
     return (
         <>
             <Grid container direction="row" justify="center" alignItems="center">
-                <FilterButton title={'Days'} onClick={handleFilterClick} />
-                <FilterButton title={'Locations'} onClick={handleFilterClick} />
-                <FilterButton title={'Category'} onClick={handleFilterClick} />
-                <FilterButton title={'Group Type'} onClick={handleFilterClick} />
+                <StyledButton title={'Days'} onClick={handleFilterClick} className={comboClasses.colorButton} />
+                <StyledButton title={'Locations'} onClick={handleFilterClick} className={comboClasses.colorButton} />
+                <StyledButton title={'Category'} onClick={handleFilterClick} className={comboClasses.colorButton} />
+                <StyledButton title={'Group Type'} onClick={handleFilterClick} className={comboClasses.colorButton} />
             </Grid>
             <Grid container direction="row" justify="center" alignItems="center">
-                <ResetButton title={'Reset'} onClick={handleFilterClear} />
+                <StyledButton title={'Reset'} onClick={handleFilterClear} className={comboClasses.grayButton} />
             </Grid>
             <List>
                 { listItems }
