@@ -11,6 +11,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import DayFilterDialog from './DayFilterDialog';
 import GroupListItem from './GroupListItem';
 import FilterButton from './FilterButton';
+import ResetButton from './ResetButton';
 import CampusFilterDialog from './CampusFilterDialog';
 import CategoryFilterDialog from './CategoryFilterDialog';
 import GroupTypeFilterDialog from './GroupTypeFilterDialog';
@@ -112,7 +113,9 @@ const App = (props: AppProps) => {
                 <FilterButton title={'Category'} onClick={handleFilterClick} />
                 <FilterButton title={'Group Type'} onClick={handleFilterClick} />
             </Grid>
-            <Button onClick={handleFilterClear}>Clear</Button>
+            <Grid container direction="row" justify="center" alignItems="center">
+                <ResetButton title={'Reset'} onClick={handleFilterClear} />
+            </Grid>
             <List>
                 { listItems }
             </List>
