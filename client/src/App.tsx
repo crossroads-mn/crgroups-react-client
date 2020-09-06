@@ -134,29 +134,34 @@ const App = (props: AppProps) => {
                 { listItems }
             </List>
             <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition as any}>
-                    <AppBar position="fixed">
-                        <Toolbar>
-                            <Typography variant="h6" color="inherit" className={classes.dialogTitle}>
-                                { selectedFilter }
-                            </Typography>
-                            <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close" className={classes.dialogCloseButton}>
-                                <CloseIcon />
-                            </IconButton>
-                        </Toolbar>
-                    </AppBar>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit" className={classes.dialogTitle}>
+                            { selectedFilter }
+                        </Typography>
+                        <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close" className={classes.dialogCloseButton}>
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
                 <Toolbar />
                 { currentFilterDialog() }
             </Dialog>
             <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
-                <Toolbar>
-                    <Typography variant="h5">
-                        {group.TITLE}
-                    </Typography>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <Typography variant="h5" className={classes.dialogTitle}>
+                            {group.TITLE}
+                        </Typography>
+                        <IconButton edge="end" color="inherit" onClick={handleGroupDetailsClose} aria-label="close" className={classes.dialogCloseButton}>
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Toolbar/>
+                <Grid container direction="row" justify="center" alignItems="center">
                     <Button href={group.GROUP_LINK}>Sign Up</Button>
-                    <IconButton edge="end" color="inherit" onClick={handleGroupDetailsClose} aria-label="close">
-                        <CloseIcon />
-                    </IconButton>
-                </Toolbar>
+                </Grid>
                 <div style={{ margin: '4px' }}>
                     <Typography variant="h6">
                         Description
