@@ -14,6 +14,9 @@ const GroupListItem = (props: { group: GroupData, onClick: (group: GroupData) =>
         props.onClick(props.group);
     }
 
+    const primaryText = props.group.TITLE;
+    const secondaryText = `${props.group.MEET_DAY}'s - ${props.group.CATEGORY}`;
+
     let avatar;
 
     switch (props.group.GROUP_TYPE) {
@@ -44,7 +47,7 @@ const GroupListItem = (props: { group: GroupData, onClick: (group: GroupData) =>
             <ListItemAvatar>
                 { avatar }
             </ListItemAvatar>
-            <ListItemText>{props.group.TITLE}</ListItemText>
+            <ListItemText primary={primaryText} secondary={secondaryText}/>
         </ListItem>
     );
 };
