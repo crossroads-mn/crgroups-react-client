@@ -6,17 +6,16 @@ import Dialog from '@material-ui/core/Dialog';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import DayFilterDialog from './DayFilterDialog';
 import Slide from '@material-ui/core/Slide';
-import { GroupData } from './models/GroupData';
+import CloseIcon from '@material-ui/icons/Close';
+import DayFilterDialog from './DayFilterDialog';
 import GroupListItem from './GroupListItem';
 import FilterButton from './FilterButton';
-import { Filters } from 'models/Filters';
 import CampusFilterDialog from './CampusFilterDialog';
 import CategoryFilterDialog from './CategoryFilterDialog';
 import GroupTypeFilterDialog from './GroupTypeFilterDialog';
+import { GroupData } from './models/GroupData';
+import { Filters } from 'models/Filters';
 
 export interface AppProps {
     data: GroupData[]
