@@ -1,6 +1,6 @@
 import * as React from 'react';
 import List from '@material-ui/core/List';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -106,14 +106,12 @@ const App = (props: AppProps) => {
 
     return (
         <>
-            <ButtonGroup color="primary">
+            <Grid container direction="row" justify="center" alignItems="center">
                 <FilterButton title={'Days'} onClick={handleFilterClick} />
                 <FilterButton title={'Locations'} onClick={handleFilterClick} />
-            </ButtonGroup>
-            <ButtonGroup color="primary">
                 <FilterButton title={'Category'} onClick={handleFilterClick} />
                 <FilterButton title={'Group Type'} onClick={handleFilterClick} />
-            </ButtonGroup>
+            </Grid>
             <Button onClick={handleFilterClear}>Clear</Button>
             <List>
                 { listItems }
