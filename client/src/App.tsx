@@ -3,6 +3,7 @@ import List from '@material-ui/core/List';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -120,11 +121,17 @@ const App = (props: AppProps) => {
                 { listItems }
             </List>
             <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition as any}>
-                <Toolbar>
-                    <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close">
-                        <CloseIcon />
-                    </IconButton>
-                </Toolbar>
+                <AppBar>
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit">
+                            { selectedFilter }
+                        </Typography>
+                        <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close">
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Toolbar />
                 { currentFilterDialog() }
             </Dialog>
             <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
