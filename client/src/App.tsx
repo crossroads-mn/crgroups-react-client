@@ -143,8 +143,14 @@ const App = (props: AppProps) => {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Toolbar />
-                { currentFilterDialog() }
+                <Toolbar style={{ marginBottom: '4px' }}/>
+                <div style={{ 
+                    paddingTop: '16px',
+                    paddingLeft: '16px',
+                    paddingRight: '4px'
+                }}>
+                    { currentFilterDialog() }
+                </div>
             </Dialog>
             <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
                 <AppBar position="fixed">
