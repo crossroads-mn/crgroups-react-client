@@ -17,15 +17,14 @@ const useStyles = makeStyles(theme => ({
         height: 48,
         padding: '0 30px', 
         margin: '4px',
-        width: '150px' 
+        width: '150px',
+        boxShadow: `0 3px 5px 2px rgb(125 125 125 / 30%)`
     },
     buttonColor: {
-        background: `linear-gradient(95deg, ${theme.palette.primary.main} 80%, ${theme.palette.primary.light} 90%)`,
-        boxShadow: `0 3px 5px 2px rgb(125 125 125 / 30%)`,
+        background: `linear-gradient(95deg, ${theme.palette.primary.main} 80%, ${theme.palette.primary.light} 90%)`
     },
     buttonGray: {
-        background: `linear-gradient(95deg, ${theme.palette.grey[700]} 80%, ${theme.palette.grey[600]} 90%)`,
-        boxShadow: '0 3px 5px 2px rgb(125 125 125 / 30%)',
+        background: `${theme.palette.grey[500]}`
     }
 }))
 
