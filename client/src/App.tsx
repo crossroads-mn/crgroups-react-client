@@ -23,31 +23,14 @@ export interface AppProps {
     data: GroupData[]
 }
 
-const useStyles = makeStyles({
-    button: {
-        border: 0,
-        borderRadius: 3,
-        color: 'white',
-        height: 48,
-        padding: '0 30px', 
-        margin: '4px',
-        width: '150px' 
-    },
-    buttonColor: {
-        background: 'linear-gradient(95deg, #FF8E53 20%, #EBAE3D 40%)',
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    },
-    buttonGray: {
-        background: 'linear-gradient(95deg, #c5c5c5 0%, #9e9e9e 21%)',
-        boxShadow: '0 3px 5px 2px rgb(125 125 125 / 30%)',
-    },
+const useStyles = makeStyles(theme => ({
     dialogCloseButton: {
         marginRight: '4px',
     },
     dialogTitle: {
         flexGrow: 1,
     }
-})
+}))
 
 const defaultFilters : Filters = {
     Category: '',
@@ -63,10 +46,6 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
 const App = (props: AppProps) => {
 
     const classes = useStyles();
-    const comboClasses = {
-        colorButton: `${classes.button} ${classes.buttonColor}`,
-        grayButton: `${classes.button} ${classes.buttonGray}`,
-    }
 
     const [group, setGroup] = React.useState(props.data[0]);
     const [selectedFilter, setSelectedFilter] = React.useState('');
@@ -142,13 +121,13 @@ const App = (props: AppProps) => {
     return (
         <>
             <Grid container direction="row" justify="center" alignItems="center">
-                <StyledButton title={'Days'} onClick={handleFilterClick} className={comboClasses.colorButton} />
-                <StyledButton title={'Locations'} onClick={handleFilterClick} className={comboClasses.colorButton} />
-                <StyledButton title={'Category'} onClick={handleFilterClick} className={comboClasses.colorButton} />
-                <StyledButton title={'Group Type'} onClick={handleFilterClick} className={comboClasses.colorButton} />
+                <StyledButton title={'Days'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Locations'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Category'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Group Type'} onClick={handleFilterClick} style={'primary'} />
             </Grid>
             <Grid container direction="row" justify="center" alignItems="center">
-                <StyledButton title={'Reset'} onClick={handleFilterClear} className={comboClasses.grayButton} />
+                <StyledButton title={'Reset'} onClick={handleFilterClear} />
             </Grid>
             <List>
                 { listItems }
@@ -180,7 +159,8 @@ const App = (props: AppProps) => {
                 </AppBar>
                 <Toolbar/>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    <Button className={comboClasses.colorButton} href={group.GROUP_LINK}>Sign Up</Button>
+                    {/* <Button className={comboClasses.colorButton} href={group.GROUP_LINK}>Sign Up</Button> */}
+                    <StyledButton title='Sign Up' style='primary' />
                 </Grid>
                 <div style={{ margin: '4px' }}>
                     <Typography variant="h6">
