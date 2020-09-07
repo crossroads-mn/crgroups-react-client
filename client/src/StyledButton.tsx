@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 interface StyledButtonProps {
     title: string
-    style?: 'primary' | 'grey'
+    style?: 'primary' | 'grey',
+    href?: string
     onClick?: (title: string) => void
 }
 
@@ -41,7 +42,12 @@ const StyledButton = (props: StyledButtonProps) => {
         }
     }
 
-    return (<Button className={className} onClick={handleClick}>{props.title}</Button>);
+    if (props.href) {
+        return <Button className={className} href={props.href}>{props.title}</Button>;
+    }
+    else {
+        return <Button className={className} onClick={handleClick}>{props.title}</Button>;
+    }
 }
 
 export default StyledButton;

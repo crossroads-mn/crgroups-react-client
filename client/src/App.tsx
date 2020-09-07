@@ -159,8 +159,7 @@ const App = (props: AppProps) => {
                 </AppBar>
                 <Toolbar/>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    {/* <Button className={comboClasses.colorButton} href={group.GROUP_LINK}>Sign Up</Button> */}
-                    <StyledButton title='Sign Up' style='primary' />
+                    <StyledButton title='Sign Up' style='primary' href={group.GROUP_LINK}/>
                 </Grid>
                 <div style={{ margin: '4px' }}>
                     <Typography variant="h6">
