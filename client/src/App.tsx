@@ -3,15 +3,16 @@ import List from '@material-ui/core/List';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Slide from '@material-ui/core/Slide';
 import CloseIcon from '@material-ui/icons/Close';
+import { makeStyles } from '@material-ui/core/styles';
 import DayFilterDialog from './DayFilterDialog';
 import GroupListItem from './GroupListItem';
-import FilterButton from './FilterButton';
-import ResetButton from './ResetButton';
+import StyledButton from './StyledButton';
 import CampusFilterDialog from './CampusFilterDialog';
 import CategoryFilterDialog from './CategoryFilterDialog';
 import GroupTypeFilterDialog from './GroupTypeFilterDialog';
@@ -21,6 +22,15 @@ import { Filters } from 'models/Filters';
 export interface AppProps {
     data: GroupData[]
 }
+
+const useStyles = makeStyles(theme => ({
+    dialogCloseButton: {
+        marginRight: '4px',
+    },
+    dialogTitle: {
+        flexGrow: 1,
+    }
+}))
 
 const defaultFilters : Filters = {
     Category: '',
@@ -34,6 +44,9 @@ const Transition = React.forwardRef(function Transition(props: any, ref: any) {
   });
 
 const App = (props: AppProps) => {
+
+    const classes = useStyles();
+
     const [group, setGroup] = React.useState(props.data[0]);
     const [selectedFilter, setSelectedFilter] = React.useState('');
     const [filters, setFilters] = React.useState(defaultFilters)
@@ -108,35 +121,46 @@ const App = (props: AppProps) => {
     return (
         <>
             <Grid container direction="row" justify="center" alignItems="center">
-                <FilterButton title={'Days'} onClick={handleFilterClick} />
-                <FilterButton title={'Locations'} onClick={handleFilterClick} />
-                <FilterButton title={'Category'} onClick={handleFilterClick} />
-                <FilterButton title={'Group Type'} onClick={handleFilterClick} />
+                <StyledButton title={'Days'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Locations'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Category'} onClick={handleFilterClick} style={'primary'} />
+                <StyledButton title={'Group Type'} onClick={handleFilterClick} style={'primary'} />
             </Grid>
             <Grid container direction="row" justify="center" alignItems="center">
-                <ResetButton title={'Reset'} onClick={handleFilterClear} />
+                <StyledButton title={'Reset'} onClick={handleFilterClear} />
             </Grid>
             <List>
                 { listItems }
             </List>
             <Dialog fullScreen open={openFilter} onClose={handleFilterClose} TransitionComponent={Transition as any}>
-                <Toolbar>
-                    <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close">
-                        <CloseIcon />
-                    </IconButton>
-                </Toolbar>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <Typography variant="h6" color="inherit" className={classes.dialogTitle}>
+                            { selectedFilter }
+                        </Typography>
+                        <IconButton edge="end" color="inherit" onClick={handleFilterClose} aria-label="close" className={classes.dialogCloseButton}>
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Toolbar />
                 { currentFilterDialog() }
             </Dialog>
             <Dialog fullScreen open={openGroupDetails} onClose={handleGroupDetailsClose} TransitionComponent={Transition as any}>
-                <Toolbar>
-                    <Typography variant="h5">
-                        {group.TITLE}
-                    </Typography>
-                    <Button href={group.GROUP_LINK}>Sign Up</Button>
-                    <IconButton edge="end" color="inherit" onClick={handleGroupDetailsClose} aria-label="close">
-                        <CloseIcon />
-                    </IconButton>
-                </Toolbar>
+                <AppBar position="fixed">
+                    <Toolbar>
+                        <Typography variant="h5" className={classes.dialogTitle}>
+                            {group.TITLE}
+                        </Typography>
+                        <IconButton edge="end" color="inherit" onClick={handleGroupDetailsClose} aria-label="close" className={classes.dialogCloseButton}>
+                            <CloseIcon />
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+                <Toolbar style={{ marginBottom: '4px' }}/>
+                <Grid container direction="row" justify="center" alignItems="center">
+                    <StyledButton title='Sign Up' style='primary' href={group.GROUP_LINK}/>
+                </Grid>
                 <div style={{ margin: '4px' }}>
                     <Typography variant="h6">
                         Description
