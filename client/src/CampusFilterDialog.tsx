@@ -15,8 +15,7 @@ const CampusFilterDialog = (props: { filters: Filters, onFilterSelection: ( filt
 
     return (
         <FormControl component="fieldset">
-            <FormLabel component="legend">Campus</FormLabel>
-            <RadioGroup defaultValue={props.filters.MeetDay} name="campusFilter" onChange={handleSelection}>
+            <RadioGroup defaultValue={props.filters.Campus} name="campusFilter" onChange={handleSelection}>
                 <FormControlLabel value="Woodbury" control={<Radio />} label="Woodbury" />
                 <FormControlLabel value="Eagan" control={<Radio />} label="Eagan" />
                 <FormControlLabel value="Cottage Grove" control={<Radio />} label="Cottage Grove" />

@@ -15,8 +15,7 @@ const CategoryFilterDialog = (props: { filters: Filters, onFilterSelection: ( fi
 
     return (
         <FormControl component="fieldset">
-            <FormLabel component="legend">Days</FormLabel>
-            <RadioGroup defaultValue={props.filters.MeetDay} name="categoryFilter" onChange={handleSelection}>
+            <RadioGroup defaultValue={props.filters.Category} name="categoryFilter" onChange={handleSelection}>
                 <FormControlLabel value="Young Adult" control={<Radio />} label="Young Adult" />
                 <FormControlLabel value="Women" control={<Radio />} label="Women" />
                 <FormControlLabel value="Men" control={<Radio />} label="Men" />

@@ -15,7 +15,6 @@ const DayFilterDialog = (props: { filters: Filters, onFilterSelection: ( filters
 
     return (
         <FormControl component="fieldset">
-            <FormLabel component="legend">Days</FormLabel>
             <RadioGroup defaultValue={props.filters.MeetDay} name="dayFilter" onChange={handleSelection}>
                 <FormControlLabel value="Sunday" control={<Radio />} label="Sunday" />
                 <FormControlLabel value="Monday" control={<Radio />} label="Monday" />
