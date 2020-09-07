@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         background: `linear-gradient(95deg, ${theme.palette.primary.main} 80%, ${theme.palette.primary.light} 90%)`
     },
     buttonGray: {
-        background: `${theme.palette.grey[500]}`
+        background: `linear-gradient(95deg, ${theme.palette.grey[500]} 98%, ${theme.palette.grey[400]} 100%)`
     }
 }))
 
