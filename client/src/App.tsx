@@ -157,7 +157,7 @@ const App = (props: AppProps) => {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Toolbar/>
+                <Toolbar style={{ marginBottom: '4px' }}/>
                 <Grid container direction="row" justify="center" alignItems="center">
                     <StyledButton title='Sign Up' style='primary' href={group.GROUP_LINK}/>
                 </Grid>
