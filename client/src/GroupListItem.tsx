@@ -27,7 +27,7 @@ const GroupListItem = (props: { group: GroupData, onClick: (group: GroupData) =>
                 </Avatar>
             )
             break;
-        case 'Outdoor': 
+        case 'Outside': 
             avatar = (
                 <Avatar>
                     <DeckIcon />

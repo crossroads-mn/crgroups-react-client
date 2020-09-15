@@ -17,7 +17,7 @@ const GroupTypeFilterDialog = (props: { filters: Filters, onFilterSelection: ( f
         <FormControl component="fieldset">
             <RadioGroup defaultValue={props.filters.GroupType} name="groupTypeFilter" onChange={handleSelection}>
                 <FormControlLabel value="Zoom" control={<Radio />} label="Zoom" />
-                <FormControlLabel value="Outdoor" control={<Radio />} label="Outdoor" />
+                <FormControlLabel value="Outside" control={<Radio />} label="Outside" />
                 <FormControlLabel value="Inside" control={<Radio />} label="Inside" />
             </RadioGroup>
         </FormControl>

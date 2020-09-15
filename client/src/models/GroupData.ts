@@ -8,7 +8,7 @@ export interface GroupData {
     DURATION: string,
     EMAIL: string,
     GROUP_LINK: string,
-    GROUP_TYPE: 'Zoom' | 'Outdoor' | 'Inside',
+    GROUP_TYPE: 'Zoom' | 'Outside' | 'Inside',
     LEADER: string,
     LOCATION: string,
     MEET_DAY: 'Sunday' | 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday',
