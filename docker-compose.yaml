@@ -1,0 +1,28 @@
+version: "3"
+services:
+    client:
+        container_name: client
+        image: crgroups-react/client:1.0.0
+        build: ./client
+        working_dir: /client
+        entrypoint: /bin/sh
+        stdin_open: true
+        tty: true
+        volumes: 
+            - ./client:/client
+            - ./dist:/dist
+        ports:
+            - 8080:8080        
+    server:
+        container_name: server
+        image: crgroups-react/server:1.0.0
+        build: ./server
+        working_dir: /server
+        entrypoint: /bin/sh
+        stdin_open: true
+        tty: true
+        volumes: 
+            - ./server:/server
+            - ./dist:/dist
+        ports:
+            - 3000:3000

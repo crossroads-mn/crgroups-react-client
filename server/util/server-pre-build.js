@@ -6,8 +6,8 @@ const ncp = require('ncp').ncp;
 
 console.log('Starting server pre build...');
 
-const config_src = path.join(__dirname, '../config/')
-const server_dist = path.join(__dirname, '../dist/');
+const config_src = path.join(__dirname, '/server/config/')
+const server_dist = path.join(__dirname, '/dist/');
 const config_dest = path.join(server_dist, '/config/');
 const client_indexpage = path.join(__dirname, '../client/index.html');
 const client_favicon = path.join(__dirname, '../client/favicon.png');
